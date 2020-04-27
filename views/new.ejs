@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CRUD de Clientes</title>
+<link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+<body>
+<h1><%= title %></h1>
+<p>Preencha os dados abaixo para salvar o cliente.</p>
+<form action="<%= action %>" method="POST">
+    <p>
+        <label>Nome: <input type="text" name="nome" value="<%= doc.nome %>" /></label>
+    </p>
+    <p>
+        <label>Idade: <input type="number" name="idade" value="<%= doc.idade %>"  /></label>
+    </p>
+    <p>
+        <label>UF:
+            <select name="uf">
+                <% 
+                var options = ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO","MA", "MS", "MT", "PA", "PB", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"];
+
+                for ( var i = 0; i < options.length; i++) {
+                    var isSelected = (doc.uf == options[i]) ? "selected" : "";
+                %>
+                <option value="<%=options[i] %>" <%=isSelected %> >
+                    <%= options[i] %>
+                </option>
+                <% } %>
+            </select>
+        </label>
+    </p>
+    <p>
+        <a href="/">Cancelar</a> | <input type="submit" value="Salvar" />
+    </p>
+</form>
+</body>
+</html>
